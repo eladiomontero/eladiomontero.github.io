@@ -1,0 +1,70 @@
+---
+title       : Developing Data Products
+subtitle    : Final Project, 2015
+author      : Eladio Montero
+job         : Data Analyst
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+url:
+  lib: ./libraries
+  assets: ./assets
+--- .slides
+
+## The Shiny App.
+
+### Summary:
+
+1. The project.
+2. The Explanation
+3. R Code Examples
+
+--- .slides
+## The Project
+
+The project was made for the Last Course of the Data Science Specialization for Coursera.
+The guide for this course is Brian Caffo.
+The purpose of this project is to develop a data product, like we are going to do in the real life. All without the web development expertise.
+
+The Project Consist of two parts: The Hours Calculator for the Data Science Specialization.
+The other part is an age calculator in terms of days, hours, minutes and seconds.
+
+--- .slides
+
+## The Explanation.
+
+Next, we are going to explain each part separately:
+
+1. First Part:
+
+Since all the courses in the Specialization take on average 4 weeks to complete, the calculation is just the courses times the hours spent times 4. So this gives you how many hours have you spent on this site learning.
+
+```{r}
+
+input1 = 4 #This is the value for the courses taken.
+input2 = 6 #This is the value for the average hours per week
+print(input1 * 4 * input2)
+
+```
+
+
+
+--- .slides
+
+### The Explanation. (Continued)
+
+2. Second Part:
+
+With the function datediff, I can calculate in terms of units (days, hours, minutes or seconds) how much has passed since a specified date. It is impressive how much seconds I've lived! I took advantage of the function difftime, which gives me the difference between two dates, in terms of days, hours, minutes and seconds.
+
+```{r}
+date1 = as.Date("1990/06/25") #My Birthday
+date2 = Sys.Date() # The system date, as for today.
+print(as.numeric(difftime(date2, date1, units = "secs")))
+
+```
+
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products">
+  <meta name="author" content="Eladio Montero">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="./libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="./libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="./libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="./libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="./libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="./libraries/frameworks/io2012/js/slides" 
+    src="./libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products</h1>
+    <h2>Final Project, 2015</h2>
+    <p>Eladio Montero<br/>Data Analyst</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="slides" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Shiny App.</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Summary:</h3>
+
+<ol>
+<li>The project.</li>
+<li>The Explanation</li>
+<li>R Code Examples</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="slides" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The Project</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The project was made for the Last Course of the Data Science Specialization for Coursera.
+The guide for this course is Brian Caffo.
+The purpose of this project is to develop a data product, like we are going to do in the real life. All without the web development expertise.</p>
+
+<p>The Project Consist of two parts: The Hours Calculator for the Data Science Specialization.
+The other part is an age calculator in terms of days, hours, minutes and seconds.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="slides" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The Explanation.</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Next, we are going to explain each part separately:</p>
+
+<ol>
+<li>First Part:</li>
+</ol>
+
+<p>Since all the courses in the Specialization take on average 4 weeks to complete, the calculation is just the courses times the hours spent times 4. So this gives you how many hours have you spent on this site learning.</p>
+
+<pre><code class="r">input1 = 4 #This is the value for the courses taken.
+input2 = 6 #This is the value for the average hours per week
+print(input1 * 4 * input2)
+</code></pre>
+
+<pre><code>## [1] 96
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="slides" id="slide-4" style="background:;">
+  <hgroup>
+    <h3>The Explanation. (Continued)</h3>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Second Part:</li>
+</ol>
+
+<p>With the function datediff, I can calculate in terms of units (days, hours, minutes or seconds) how much has passed since a specified date. It is impressive how much seconds I&#39;ve lived! I took advantage of the function difftime, which gives me the difference between two dates, in terms of days, hours, minutes and seconds.</p>
+
+<pre><code class="r">date1 = as.Date(&quot;1990/06/25&quot;) #My Birthday
+date2 = Sys.Date() # The system date, as for today.
+print(as.numeric(difftime(date2, date1, units = &quot;secs&quot;)))
+</code></pre>
+
+<pre><code>## [1] 786067200
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Shiny App.'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The Project'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The Explanation.'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='The Explanation. (Continued)'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="./libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
