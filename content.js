@@ -89,10 +89,12 @@ window.SITE_CONTENT = {
      Brag a little. `status` is the small label (e.g. "Reading now",
      "Finished", "On the shelf"). Add or remove freely; set reading: [] to hide. */
   reading: [
-    { title: "Governing the Commons", author: "Elinor Ostrom", status: "Re-reading" },
     { title: "The Alignment Problem", author: "Brian Christian", status: "Reading now" },
-    { title: "The Evolution of Cooperation", author: "Robert Axelrod", status: "On the shelf" },
-    { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", status: "Finished" },
+    { title: "Human Compatible", author: "Stuart Russell", status: "On the shelf" },
+    { title: "If Anyone Builds It, Everyone Dies: Why Superhuman AI Would Kill Us All", author: "Eliezer Yudkowsky, Nate Soares ", status: "On the shelf" },
+    { title: "Enshittification: Why Everything Suddenly Got Worse and What to Do About It", author: "Cory Doctorow", status: "Finished" },
+    { title: "Perfection", author: "Vincenzo Latronico", status: "Finished" },
+    { title: "El oficio de ser extranjero", author: "Roger Bartra", status: "Finished" },
   ],
 
   /* --- Experience timeline ------------------------------------------------
