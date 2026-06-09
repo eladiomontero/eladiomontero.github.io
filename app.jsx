@@ -48,8 +48,9 @@ function Nav() {
   ["research", "Research"],
   C.projects && C.projects.length ? ["projects", "Projects"] : null,
   C.writing && C.writing.length ? ["writing", "Writing"] : null,
-  C.reading && C.reading.length ? ["reading", "Reading"] : null,
+  C.skills && C.skills.length ? ["skills", "Skills"] : null,
   C.experience && C.experience.length ? ["experience", "Experience"] : null,
+  C.reading && C.reading.length ? ["reading", "Reading"] : null,
   ["contact", "Contact"]].
   filter(Boolean);
   return (
@@ -181,18 +182,76 @@ function Writing({ n }) {
 /* ---- reading ------------------------------------------------------------ */
 function Reading({ n }) {
   if (!C.reading || !C.reading.length) return null;
+  const PER = 6;
+  const [page, setPage] = useState(0);
+  const pages = Math.ceil(C.reading.length / PER);
+  const slice = C.reading.slice(page * PER, page * PER + PER);
+
+  // paginated-in cards aren't seen by the global reveal observer, so fade them in here
+  useEffect(() => {
+    const els = [...document.querySelectorAll("#reading .book[data-reveal]")];
+    els.forEach((el) => el.removeAttribute("data-shown"));
+    const id = setTimeout(() => els.forEach((el) => el.setAttribute("data-shown", "")), 40);
+    return () => clearTimeout(id);
+  }, [page]);
+
   return (
-    <section id="reading" className="section alt">
+    <section id="reading" className="section">
       <Head n={n} kicker="Reading" title="On my shelf" />
       <div className="shelf">
-        {C.reading.map((b, i) =>
-        <div className="book" data-reveal style={{ transitionDelay: `${i * 55}ms` }} key={i}>
-            <span className="book-status">{b.status}</span>
-            <h3>{b.title}</h3>
-            <p>{b.author}</p>
+        {slice.map((b, i) => {
+          const cut = b.title.indexOf(": ");
+          const main = cut > -1 ? b.title.slice(0, cut) : b.title;
+          const sub = cut > -1 ? b.title.slice(cut + 2) : "";
+          return (
+            <div className="book" data-reveal style={{ transitionDelay: `${i * 55}ms` }} key={page + "-" + i}>
+              <span className="book-status">{b.status}</span>
+              <h3>{main}{sub ? <span className="book-sub">{sub}</span> : null}</h3>
+              <p>{b.author}</p>
+              {b.review ? <p className="book-review">{b.review}</p> : null}
+            </div>);
+
+        })}
+      </div>
+      {pages > 1 ?
+      <div className="pager">
+          <button className="pager-arrow" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0} aria-label="Previous page">‹</button>
+          <div className="pager-dots">
+            {Array.from({ length: pages }).map((_, i) =>
+            <button key={i} className={"pager-dot" + (i === page ? " on" : "")} onClick={() => setPage(i)} aria-label={"Page " + (i + 1)}>{String(i + 1).padStart(2, "0")}</button>
+            )}
+          </div>
+          <button className="pager-arrow" onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page === pages - 1} aria-label="Next page">›</button>
+        </div> :
+      null}
+    </section>);
+
+}
+
+/* ---- skills ------------------------------------------------------------- */
+function Skills({ n }) {
+  if (!C.skills || !C.skills.length) return null;
+  return (
+    <section id="skills" className="section">
+      <Head n={n} kicker="Toolkit" title="What I work with" />
+      <div className="skills">
+        {C.skills.map((s, i) =>
+        <div className="skill-group" data-reveal style={{ transitionDelay: `${i * 50}ms` }} key={i}>
+            <p className="skill-label">{s.group}</p>
+            <div className="skill-chips">
+              {s.items.map((it) => <span className="chip" key={it}>{it}</span>)}
+            </div>
           </div>
         )}
       </div>
+      {C.languages && C.languages.length ?
+      <div className="langs" data-reveal>
+          <p className="skill-label">Languages</p>
+          <div className="skill-chips">
+            {C.languages.map((l) => <span className="chip" key={l.name}>{l.name} <span className="lvl">{l.level}</span></span>)}
+          </div>
+        </div> :
+      null}
     </section>);
 
 }
@@ -201,7 +260,7 @@ function Reading({ n }) {
 function Experience({ n }) {
   if (!C.experience || !C.experience.length) return null;
   return (
-    <section id="experience" className="section">
+    <section id="experience" className="section alt">
       <Head n={n} kicker="The path here" title="Where I've worked" />
       <div className="timeline">
         {C.experience.map((e, i) =>
@@ -282,8 +341,9 @@ function App() {
   ["research", true],
   ["projects", C.projects && C.projects.length],
   ["writing", C.writing && C.writing.length],
-  ["reading", C.reading && C.reading.length],
-  ["experience", C.experience && C.experience.length]].
+  ["skills", C.skills && C.skills.length],
+  ["experience", C.experience && C.experience.length],
+  ["reading", C.reading && C.reading.length]].
   filter(([, v]) => v);
   const num = {};
   order.forEach(([k], i) => {num[k] = String(i + 1).padStart(2, "0");});
@@ -296,8 +356,9 @@ function App() {
         <Research n={num.research} />
         <Projects n={num.projects} />
         <Writing n={num.writing} />
-        <Reading n={num.reading} />
+        <Skills n={num.skills} />
         <Experience n={num.experience} />
+        <Reading n={num.reading} />
         <Contact />
       </main>
       <Panel t={t} setTweak={setTweak} />

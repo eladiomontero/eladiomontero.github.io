@@ -12,9 +12,9 @@ window.SITE_CONTENT = {
   name: "Eladio Montero-Porras",
   role: "Postdoctoral Researcher · ULB, Brussels",
   // The big intro line. Keep it short and human.
-  tagline: "I study how people, and now AI, make decisions and what those choices add up to.",
+  tagline: "My work focuses on the human side of technology.",
   // A couple of sentences under the intro.
-  intro: "Researcher and data scientist with a PhD in AI and game theory, now a postdoc in Brussels. I care about technology that's built responsibly and made to last, and I use behavioural science, data and computational models to help get it there. Now that AI agents are starting to decide alongside us, getting these collective dynamics right matters more than ever.",
+  intro: "I’m a researcher and data scientist with a PhD in AI and game theory, currently a postdoc in Brussels. I care about technology that's built responsibly and made to last, and often use data and computational models to help get it there. A challenge I’m focusing on is AI-human cooperation: as AI increasingly makes decisions for and with us, understanding how to develop it in alignment with our values matters more than ever.",
   photo: "https://eladiomontero.com/images/profile_square.jpg",
 
   // Top links / contact. icon is one of: email, linkedin, scholar, github, twitter, web
@@ -62,8 +62,14 @@ window.SITE_CONTENT = {
     {
       title: "TrafficTwin",
       tag: "Digital twin · ULB",
-      blurb: "A digital twin of city traffic. I feed live and historical sensor data into mobility models so cities can test a road change before they commit to it.",
+      blurb: "A digital twin of city traffic. It uses live and historical sensor data into mobility models so cities can test a road change before they commit to it.",
       link: "https://traffictwin.ulb.be/",
+    },
+    {
+      title: "When personalisation goes bad",
+      tag: "Digital Platforms",
+      blurb: "Modelling how recommendation algorithms reshape content quality and the incentives of creators and users, and where personalisation quietly makes everyone worse off.",
+      link: "",
     },
     {
       title: "LLMs in resource dilemmas",
@@ -71,12 +77,7 @@ window.SITE_CONTENT = {
       blurb: "Benchmarking flagship language models on risk and shared-resource decisions, then checking how their choices line up against what real people do.",
       link: "",
     },
-    {
-      title: "When personalisation goes bad",
-      tag: "AI governance",
-      blurb: "Modelling how recommendation algorithms reshape content quality and the incentives of creators and users, and where personalisation quietly makes everyone worse off.",
-      link: "",
-    },
+    
   ],
 
   /* --- Writing / notes ----------------------------------------------------
@@ -87,18 +88,38 @@ window.SITE_CONTENT = {
 
   /* --- Reading / bookshelf ------------------------------------------------
      Brag a little. `status` is the small label (e.g. "Reading now",
-     "Finished", "On the shelf"). Add or remove freely; set reading: [] to hide. */
+     "Finished", "On the shelf"). `review` is your one-line take — leave it as
+     "" to show nothing, or add a sentence and it appears under the book.
+     Long titles: put a ": " before the subtitle and it tucks underneath.
+     Add or remove freely; set reading: [] to hide. Shows 6 per page. */
   reading: [
-    { title: "The Alignment Problem", author: "Brian Christian", status: "Reading now" },
-    { title: "Human Compatible", author: "Stuart Russell", status: "On the shelf" },
-    { title: "If Anyone Builds It, Everyone Dies: Why Superhuman AI Would Kill Us All", author: "Eliezer Yudkowsky, Nate Soares ", status: "On the shelf" },
-    { title: "Enshittification: Why Everything Suddenly Got Worse and What to Do About It", author: "Cory Doctorow", status: "Finished" },
-    { title: "Perfection", author: "Vincenzo Latronico", status: "Finished" },
-    { title: "El oficio de ser extranjero", author: "Roger Bartra", status: "Finished" },
+    { title: "The Alignment Problem", author: "Brian Christian", status: "Reading now", review: "" },
+    { title: "Human Compatible", author: "Stuart Russell", status: "On the shelf", review: "" },
+    { title: "If Anyone Builds It, Everyone Dies: Why Superhuman AI Would Kill Us All", author: "Eliezer Yudkowsky, Nate Soares", status: "On the shelf", review: "" },
+    { title: "Enshittification: Why Everything Suddenly Got Worse and What to Do About It", author: "Cory Doctorow", status: "Finished", review: "" },
+    { title: "Perfection", author: "Vincenzo Latronico", status: "Finished", review: "" },
+    { title: "El oficio de ser extranjero", author: "Roger Bartra", status: "Finished", review: "" },
+  ],
+
+  /* --- Skills / toolkit ---------------------------------------------------
+     Grouped so it reads as scannable chips, not a paragraph. Trim or reorder
+     items freely; the shortest, most recognisable labels read best. */
+  skills: [
+    { group: "Programming & data", items: ["Python", "R", "SQL", "Java", "JavaScript", "Pandas / NumPy", "scikit-learn", "ETL pipelines"] },
+    { group: "Statistical modelling", items: ["Machine Learning","Mixed-effects models", "GAMs", "Bayesian inference", "Regression", "Bootstrapping", "Power analysis"] },
+    { group: "Behavioural science", items: ["Experiment design","oTree", "Prolific", "Pre-registration", "Data privacy compliance"] },
+    { group: "Simulation & modelling", items: ["Agent-based models", "Evolutionary game theory", "SUMO traffic sim", "Digital twins"] },
+    { group: "Geospatial", items: ["QGIS", "OpenStreetMap", "GeoPandas"] },
+    { group: "Communication & teams", items: ["Peer-reviewed writing", "Funding proposal writing", "Science comms", "Student supervision", "Multi-stakeholder projects"] },
+  ],
+  languages: [
+    { name: "Spanish", level: "Native" },
+    { name: "English", level: "C2" },
+    { name: "French", level: "B1" },
+    { name: "Portuguese", level: "A2" },
   ],
 
   /* --- Experience timeline ------------------------------------------------
-     PLACEHOLDERS — fill in real roles, places and years from your CV.
      Most recent first. */
   experience: [
     { period: "2024 – now",  role: "Postdoctoral Researcher", org: "Université Libre de Bruxelles", note: "Extending behavioural game-theory work to LLMs, and coordinating the TrafficTwin digital twin." },
