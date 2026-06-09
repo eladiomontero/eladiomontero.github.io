@@ -294,7 +294,7 @@ function Contact() {
       </div>
       <footer className="foot">
         <span>© {new Date().getFullYear()} {C.name}</span>
-        <span className="foot-made">Built to be easy to update</span>
+        
       </footer>
     </section>);
 
